@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youcef Gacem | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b1117;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --text: #f5f7fa;
+      --muted: #aab4c0;
+      --green: #1a5c38;
+      --green-light: #27ae60;
+      --red: #c0392b;
+      --white: #ffffff;
+      --shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(39, 174, 96, 0.25), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(192, 57, 43, 0.18), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      padding: 28px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(11, 17, 23, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .logo span {
+      color: var(--green-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .hero {
+      min-height: calc(100vh - 86px);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 60px;
+      padding: 70px 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 24px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green-light);
+      border-radius: 50%;
+      box-shadow: 0 0 18px var(--green-light);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 22px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #ffffff, #27ae60);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--green-light);
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .description {
+      color: var(--muted);
+      max-width: 660px;
+      font-size: 1.05rem;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.3s;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-light), var(--green));
+      color: white;
+      box-shadow: 0 14px 35px rgba(39, 174, 96, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 45px rgba(39, 174, 96, 0.35);
+    }
+
+    .btn-secondary {
+      border-color: var(--card-border);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 32px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: rgba(39, 174, 96, 0.22);
+      border-radius: 50%;
+      top: -80px;
+      right: -80px;
+      filter: blur(8px);
+    }
+
+    .profile-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(39, 174, 96, 0.28), rgba(192, 57, 43, 0.18)),
+        url("profile.jpg");
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-info {
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-info h2 {
+      font-size: 1.55rem;
+      margin-bottom: 8px;
+    }
+
+    .profile-info p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .social-link {
+      padding: 13px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .social-link:hover {
+      background: rgba(39, 174, 96, 0.18);
+      border-color: rgba(39, 174, 96, 0.5);
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 26px;
+      backdrop-filter: blur(18px);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(39, 174, 96, 0.45);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 11px 15px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.93rem;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, rgba(39, 174, 96, 0.2), rgba(255, 255, 255, 0.06));
+      border: 1px solid var(--card-border);
+      border-radius: 30px;
+      padding: 42px;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    footer {
+      padding: 28px 0;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 45px 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        text-align: center;
+      }
+
+      .profile-card,
+      .contact-box {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Youcef<span>.</span></a>
+
+        <div class="nav-links">
+          <a href="#about">À propos</a>
+          <a href="#skills">Compétences</a>
+          <a href="#projects">Projets</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero container">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Basé à Bruxelles Belgique
+        </div>
+
+        <h1 class="hero-title">
+          Youcef <br>
+          <span>Gacem</span>
+        </h1>
+
+        <p class="subtitle">
+          Étudiant en informatique | Développeur junior | Digital Creator
+        </p>
+
+        <p class="description">
+          Je suis étudiant en informatique à Bruxelles, passionné par le développement web,
+          les projets numériques et la création de contenu digital. Je construis progressivement
+          mon parcours dans l’IT à travers des projets concrets, académiques et associatifs.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+          <a href="mailto:youcefgacem2002@gmail.com" class="btn btn-secondary">Me contacter</a>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-image"></div>
+
+        <div class="profile-info">
+          <h2>Youcef Gacem</h2>
+          <p>Informatique développement web communication digitale et projets associatifs</p>
+
+          <div class="social-grid">
+            <a class="social-link" href="https://www.linkedin.com/in/youcefgacem51/" target="_blank">LinkedIn</a>
+            <a class="social-link" href="https://github.com/youcefgacem" target="_blank">GitHub</a>
+            <a class="social-link" href="https://www.instagram.com/joseph__gacem/" target="_blank">Instagram</a>
+            <a class="social-link" href="https://www.facebook.com/YOUCEFFGACEM" target="_blank">Facebook</a>
+            <a class="social-link" href="https://www.facebook.com/youcef.gacem.officielle" target="_blank">Page FB</a>
+            <a class="social-link" href="https://wa.me/32492034469" target="_blank">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">À propos de moi</h2>
+        <p class="section-subtitle">
+          Mon profil combine informatique, communication digitale et engagement associatif.
+          Je développe mes compétences techniques tout en participant à des projets utiles,
+          concrets et orientés vers l’impact.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Parcours informatique</h3>
+            <p>
+              Étudiant en informatique, je m’intéresse au développement d’applications,
+              aux bases de données, au web et aux solutions numériques simples et efficaces.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Vision professionnelle</h3>
+            <p>
+              Mon objectif est d’évoluer vers un profil de développeur junior,
+              capable de travailler sur des projets réels et de continuer à progresser.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Engagement digital</h3>
+            <p>
+              J’ai aussi une expérience dans la création de contenu, la communication,
+              l’organisation d’événements et la coordination de projets associatifs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Compétences</h2>
+        <p class="section-subtitle">
+          Un ensemble de compétences techniques et humaines que je développe à travers mes études,
+          mes projets et mes expériences sur le terrain.
+        </p>
+
+        <div class="skills">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">Java</span>
+          <span class="skill">SQL</span>
+          <span class="skill">Python</span>
+          <span class="skill">Bases de données</span>
+          <span class="skill">Git</span>
+          <span class="skill">GitHub</span>
+          <span class="skill">Communication digitale</span>
+          <span class="skill">Création de contenu</span>
+          <span class="skill">Organisation d’événements</span>
+          <span class="skill">Gestion d’équipe</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projets</h2>
+        <p class="section-subtitle">
+          Voici quelques projets que je peux présenter dans mon portfolio.
+          Cette section pourra évoluer avec des liens GitHub et des captures d’écran.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Portfolio personnel</h3>
+            <p>
+              Création d’un site web personnel moderne pour présenter mon profil,
+              mes compétences, mes projets et mes liens professionnels.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Projets académiques</h3>
+            <p>
+              Réalisation de projets en programmation, bases de données et analyse informatique
+              dans le cadre de ma formation.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Communication digitale</h3>
+            <p>
+              Création de visuels, vidéos et supports de communication pour des événements
+              étudiants, associatifs et numériques.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <h2>Travaillons ensemble</h2>
+            <p>
+              Pour une opportunité, un projet, une collaboration ou simplement un contact professionnel,
+              vous pouvez me joindre directement par email ou via mes réseaux.
+            </p>
+          </div>
+
+          <div class="buttons">
+            <a href="mailto:youcefgacem2002@gmail.com" class="btn btn-primary">Email</a>
+            <a href="https://wa.me/32492034469" target="_blank" class="btn btn-secondary">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Youcef Gacem. Tous droits réservés.
+    </div>
+  </footer>
+
+</body>
+</html>
